@@ -1,0 +1,1 @@
+the hardhat version used in the tutorial is v2.13.0 so incase there is an error, you can always check the version and adjust
