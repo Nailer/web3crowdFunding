@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='backgroundMain p-6 text-center'>
-        <span>© 2023 Copyright:</span>
+        <span>© 2025 Copyright:</span>
         <a 
           href="https://github.com/Nailer"
           className='font-semibold'
