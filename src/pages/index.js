@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react'
 //INTERNAL IMPORTS
 import { CrowdFundingContext } from "../../Context/CrowdFunding"
-import { Hero, Card, PopUp } from "../../Components"
+import { Hero, Card, PupUp } from "../../Components"
 
 
-export default function index() {
+const index = () => {
   const { titleData, getCampaigns, createCampaign, donate, getUserCampaigns, getDonations } = useContext(CrowdFundingContext);
   const [allcampaign, setAllcampaign] = useState();
   const [usercampaign, setUsercampaign] = useState();
@@ -35,6 +35,23 @@ export default function index() {
         setOpenModel={setOpenModel}
         setDonante={setDonateCampaign} 
       />
+      <Card
+        title="Your Created Campaign"
+        allcampaign={usercampaign}
+        setOpenModel={usercampaign}
+        setDonante={setDonateCampaign}
+      />
+      {openModel && (
+        <PupUp 
+          setOpenModel={setOpenModel}
+          getDonations={getDonations}
+          donate={donateCampaign}
+          donateFunction={donate}
+        />
+      )}
     </>
-  )
-}
+  );
+};
+
+export default index;
+
