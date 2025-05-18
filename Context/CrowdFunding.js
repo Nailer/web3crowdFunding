@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Wenb3Modal from "web3modal";
+import Web3Modal from "web3modal";
 import { ethers } from "ethers";
+import { JsonRpcProvider } from "ethers"
 
 // internal imports
 import { CrowdFundingABI, CrowdFundingAddress } from "./contants";
@@ -16,9 +17,9 @@ export const CrowdFundingProvider = ({ children }) => {
 
     const createCampaign = async (campaign) => {
         const { title, description, amount, deadline } = campaign;
-        const web3Modal = new Wenb3Modal();
+        const web3Modal = new Web3Modal();
         const connection = await web3Modal.connect();
-        const provider = new ethers.providers.Web3Provider(connection);
+        const provider = new ethers.BrowserProvider(connection);
         const signer = provider.getSigner();
         const contract = fetchContract(signer);
 
@@ -44,7 +45,7 @@ export const CrowdFundingProvider = ({ children }) => {
     }
 
     const getCampaigns = async () => {
-        const provider = new ethers.providers.JsonRpcProvider();
+        const provider = new JsonRpcProvider("http://127.0.0.1:8545/");
         const contract = fetchContract(provider);
 
         const campaigns = await contract.getCampaign();
@@ -64,7 +65,7 @@ export const CrowdFundingProvider = ({ children }) => {
     };
 
     const getUserCampaigns = async () => {
-        const provider = new ethers.providers.JsonRpcProvider();
+        const provider = new JsonRpcProvider("http://127.0.0.1:8545/");
         const contract = fetchContract(provider);
 
         const allCampaigns = await contract.getCampaign();
@@ -95,7 +96,7 @@ export const CrowdFundingProvider = ({ children }) => {
     }
 
     const donate = async () => {
-        const web3Modal = new Wenb3Modal();
+        const web3Modal = new Web3Modal();
         const connection = await web3Modal.connect();
         const provider = new ethers.providers.Web3Provider(connection);
         const signer = provider.getSigner();
@@ -112,7 +113,7 @@ export const CrowdFundingProvider = ({ children }) => {
     };
 
     const getDonations = async (pId) => {
-        const provider = new ethers.providers.JsonRpcProvider();
+        const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
         const contract = fetchContract(provider);
 
         const donations = await contract.getDonators(pId);
