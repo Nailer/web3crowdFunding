@@ -29,7 +29,7 @@ export const CrowdFundingProvider = ({ children }) => {
                 currentAccount, // owner
                 title, 
                 description, // description
-                ethers.utils.parseUnits(amount, 18),
+                ethers.utils.parseUnits(amount, 0),
                 new Date(deadline).getTime()
             ); 
 
