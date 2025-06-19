@@ -33,13 +33,13 @@ const index = () => {
         title="All Listed Campaign"
         allcampaign={allcampaign}
         setOpenModel={setOpenModel}
-        setDonante={setDonateCampaign} 
+        setDonate={setDonateCampaign} 
       />
       <Card
         title="Your Created Campaign"
         allcampaign={usercampaign}
         setOpenModel={usercampaign}
-        setDonante={setDonateCampaign}
+        setDonate={setDonateCampaign}
       />
       {openModel && (
         <PupUp 

@@ -20,7 +20,7 @@ export const CrowdFundingProvider = ({ children }) => {
         const web3Modal = new Web3Modal();
         const connection = await web3Modal.connect();
         const provider = new ethers.BrowserProvider(connection);
-        const signer = provider.getSigner();
+        const signer = await provider.getSigner();
         const contract = fetchContract(signer);
 
         console.log(currentAccount);
@@ -29,7 +29,7 @@ export const CrowdFundingProvider = ({ children }) => {
                 currentAccount, // owner
                 title, 
                 description, // description
-                ethers.utils.parseUnits(amount, 0),
+                ethers.parseUnits(amount, 18),
                 new Date(deadline).getTime()
             ); 
 
