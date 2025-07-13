@@ -1,1 +1,10 @@
 the hardhat version used in the tutorial is v2.13.0 so incase there is an error, you can always check the version and adjust
+
+there is always an error whenever i deploy the project whereby the contract call fails - the troubleshoot involves me setting the connected wallet to the supposed wallet that the 'connect wallet' has connected to 
+
+the process of deploying and starting the project - 
+    - first start the hardhat node
+    - then run the deploy script(make sure the network is set to hardhat node)
+    - then start the app (npm run dev)
+;
+
