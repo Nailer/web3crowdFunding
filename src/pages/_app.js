@@ -4,6 +4,8 @@ import "@/styles/globals.css";
 import { NavBar, Footer } from "../../Components";
 import { CrowdFundingProvider } from "../../Context/CrowdFunding"
 
+export const runtime = "edge";
+
 function App({ Component, pageProps }) {
   return (
     <>

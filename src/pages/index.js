@@ -3,6 +3,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import { CrowdFundingContext } from "../../Context/CrowdFunding"
 import { Hero, Card, PupUp } from "../../Components"
 
+export const runtime = "edge";
 
 const index = () => {
   const { titleData, getCampaigns, createCampaign, donate, getUserCampaigns, getDonations } = useContext(CrowdFundingContext);
