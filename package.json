@@ -36,7 +36,6 @@
     "chai": "^4.5.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
-    "hardhat": "^2.23.0",
     "hardhat-gas-reporter": "^1.0.10",
     "solidity-coverage": "^0.8.16",
     "tailwindcss": "^4.1.4",

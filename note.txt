@@ -8,3 +8,7 @@ the process of deploying and starting the project -
     - then start the app (npm run dev)
 ;
 
+cmd to deploy to hardhat localhost 
+`npx hardhat run --network loc
+alhost scripts/deploy.js`
+

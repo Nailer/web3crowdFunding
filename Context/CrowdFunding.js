@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { JsonRpcProvider } from "ethers"
+import { formatEther } from "ethers"
 
 // internal imports
 import { CrowdFundingABI, CrowdFundingAddress } from "./contants";
@@ -53,9 +54,9 @@ export const CrowdFundingProvider = ({ children }) => {
             owner: campaign.owner, 
             title: campaign.title,
             description: campaign.description,
-            target: ethers.utils.formatEther(campaign.target.toString()),
-            deadline: campaign.deadline.toNumber(),
-            amountCollected: ethers.utils.formatEther(
+            target: formatEther(campaign.target.toString()),
+            deadline: campaign.deadline,
+            amountCollected: formatEther(
                 campaign.amountCollected.toString()
             ),
             pId: i,
