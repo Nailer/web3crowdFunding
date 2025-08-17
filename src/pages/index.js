@@ -7,19 +7,39 @@ export const runtime = "edge";
 
 const index = () => {
   const { titleData, getCampaigns, createCampaign, donate, getUserCampaigns, getDonations } = useContext(CrowdFundingContext);
-  const [allcampaign, setAllcampaign] = useState();
+  const [allcampaign, setAllcampaign] = useState([]);
   const [usercampaign, setUsercampaign] = useState();
 
+  // useEffect(() => {
+  //   const getCampaignsData = getCampaigns();
+  //   console.log("getCampaignsData", getCampaignsData);
+    
+  //   const userCampaignData = getUserCampaigns();
+  //   return async () => {
+  //     const allData = await getCampaignsData;
+  //     const userData = await userCampaignData;
+  //     setAllcampaign(allData);
+  //     setUsercampaign(userData);
+  //   };
+  // }, []);
+
   useEffect(() => {
-    const getCampaignsData = getCampaigns();
-    const userCampaignData = getUserCampaigns();
-    return async () => {
-      const allData = await getCampaignsData;
-      const userData = await userCampaignData;
-      setAllcampaign(allData);
-      setUsercampaign(userData);
+    const fetchData = async () => {
+      try {
+        const allData = await getCampaigns();
+        const userData = await getUserCampaigns();
+
+        setAllcampaign(allData || []);   // ensure array
+        setUsercampaign(userData || []); // ensure array
+      } catch (error) {
+        console.error("Error fetching campaigns:", error);
+        setAllcampaign([]); // fallback to empty array
+      }
     };
+
+    fetchData();
   }, []);
+
 
   //DONATE POPUP MODEL
   const [openModel, setOpenModel] = useState(false);

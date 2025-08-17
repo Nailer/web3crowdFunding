@@ -4,10 +4,25 @@ const Card = ({ allcampaign, setOpenModel, setDonate, title }) => {
 
   console.log(allcampaign);
 
+  // const daysLeft = (deadline) => {
+  //   const difference = new Date(deadline).getTime() - Date.now();
+  //   const remainingDays = difference / (1000 * 3600 * 24);
+  //   return remainingDays.toFixed(0);
+  // };
+
   const daysLeft = (deadline) => {
-    const difference = new Date(deadline).getTime() - Date.now();
-    const remainingDays = difference / (1000 * 3600 * 24);
-    return remainingDays.toFixed(0);
+  // Convert BigInt to Number and multiply by 1000
+    const convertedDeadlineDate = Number(deadline)
+    const deadlineTimeConverted = new Date(convertedDeadlineDate)
+    console.log("convertedDeadlineDate time", deadlineTimeConverted);
+    const dateCheck = new Date(Date.now());
+    console.log("date now", dateCheck);
+
+    const fundingDeadline = deadlineTimeConverted - dateCheck
+    const fundingDeadlineToDay = fundingDeadline / (1000 * 60 * 60 * 24)
+    console.log("the time to use", fundingDeadlineToDay);
+    
+    return Math.floor(fundingDeadlineToDay) 
   };
   
 

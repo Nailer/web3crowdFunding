@@ -117,7 +117,7 @@ const Hero = ({ titleData, createCampaign }) => {
                       htmlFor="email"
                       className="inline-block mb-1 font-medium"
                     >
-                      Target Amount
+                      Target Amount 
                     </label>
                     <input
                       type="text"
@@ -138,7 +138,7 @@ const Hero = ({ titleData, createCampaign }) => {
                         htmlFor="email"
                         className="inline-block mb-1 font-medium"
                       >
-                        Target Amount
+                        Target Date
                       </label>
                       <input
                         type="date"
