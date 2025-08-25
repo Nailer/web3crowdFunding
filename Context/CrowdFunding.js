@@ -78,16 +78,17 @@ export const CrowdFundingProvider = ({ children }) => {
 
         const filteredCampaigns = allCampaigns.filter(
             (campaign) => 
-                campaign.owner === "0xf39Fd6e51aad88F6F4ce6a88827279cffFb92266"
+                campaign.owner === "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
         );
+        // "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
 
         const userData = filteredCampaigns.map((campaign, i) => ({
             owner: campaign.owner,
             title: campaign.title,
             description: campaign.description,
-            target: ethers.utils.formatEther(campaign.target.toString()),
-            deadline: campaign.deadline.toNumber(),
-            amountCollected: ethers.utils.formatEther(
+            target: formatEther(campaign.target.toString()),
+            deadline: campaign.deadline,
+            amountCollected: formatEther(
                 campaign.amountCollected.toString()
             ),
             pId: i
@@ -99,7 +100,7 @@ export const CrowdFundingProvider = ({ children }) => {
     const donate = async () => {
         const web3Modal = new Web3Modal();
         const connection = await web3Modal.connect();
-        const provider = new ethers.providers.Web3Provider(connection);
+        const provider = new ethers.BrowserProvider(connection);
         const signer = provider.getSigner();
         const contract = fetchContract(signer);
 
@@ -114,7 +115,7 @@ export const CrowdFundingProvider = ({ children }) => {
     };
 
     const getDonations = async (pId) => {
-        const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
+        const provider = new JsonRpcProvider("http://127.0.0.1:8545/");
         const contract = fetchContract(provider);
 
         const donations = await contract.getDonators(pId);

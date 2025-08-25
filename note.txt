@@ -9,6 +9,5 @@ the process of deploying and starting the project -
 ;
 
 cmd to deploy to hardhat localhost 
-`npx hardhat run --network loc
-alhost scripts/deploy.js`
+`npx hardhat run --network localhost scripts/deploy.js`
 

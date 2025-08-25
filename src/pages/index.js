@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
 //INTERNAL IMPORTS
 import { CrowdFundingContext } from "../../Context/CrowdFunding"
-import { Hero, Card, PupUp } from "../../Components"
+import { Hero, Card, PopUp } from "../../Components"
 
 export const runtime = "edge";
 
@@ -59,11 +59,11 @@ const index = () => {
       <Card
         title="Your Created Campaign"
         allcampaign={usercampaign}
-        setOpenModel={usercampaign}
+        setOpenModel={setOpenModel}
         setDonate={setDonateCampaign}
       />
       {openModel && (
-        <PupUp 
+        <PopUp 
           setOpenModel={setOpenModel}
           getDonations={getDonations}
           donate={donateCampaign}
