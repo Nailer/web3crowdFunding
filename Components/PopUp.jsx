@@ -8,9 +8,13 @@ const PopUp = ({ setOpenModel, donate, donateFunction, getDonations }) => {
   const createDonation = async () => {
     try {
       const data = await donateFunction(donate.pId, amount);
+      console.log("donate pId", donate.pId);
       console.log(data);
     } catch (error) {
-      console.log(error);
+      console.log("donation err", error);
+      console.log("donation amount", amount);
+      console.log("donation pId", donate.pId);
+      
     }
   }
 

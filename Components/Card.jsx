@@ -2,8 +2,6 @@ import React from 'react'
 
 const Card = ({ allcampaign, setOpenModel, setDonate, title }) => {
 
-  console.log("these are the campaigns", allcampaign);
-
   // const daysLeft = (deadline) => {
   //   const difference = new Date(deadline).getTime() - Date.now();
   //   const remainingDays = difference / (1000 * 3600 * 24);

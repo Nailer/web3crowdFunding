@@ -10,18 +10,6 @@ const index = () => {
   const [allcampaign, setAllcampaign] = useState([]);
   const [usercampaign, setUsercampaign] = useState();
 
-  // useEffect(() => {
-  //   const getCampaignsData = getCampaigns();
-  //   console.log("getCampaignsData", getCampaignsData);
-    
-  //   const userCampaignData = getUserCampaigns();
-  //   return async () => {
-  //     const allData = await getCampaignsData;
-  //     const userData = await userCampaignData;
-  //     setAllcampaign(allData);
-  //     setUsercampaign(userData);
-  //   };
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +33,7 @@ const index = () => {
   const [openModel, setOpenModel] = useState(false);
   const [donateCampaign, setDonateCampaign] = useState();
 
-  console.log(donateCampaign);
+  console.log("donate campaign state", donateCampaign);
 
   return (
     <>

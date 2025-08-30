@@ -3,12 +3,210 @@ import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { JsonRpcProvider } from "ethers"
 import { formatEther } from "ethers"
+import { parseEther } from "ethers"
 
 // internal imports
-import { CrowdFundingABI, CrowdFundingAddress } from "./contants";
+// import { CrowdFundingABI, CrowdFundingAddress } from "./contants";
+
+
+// contract address
+const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+
+// abi 
+const abi = [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "campaigns",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "target",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountCollected",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_title",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_target",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_deadline",
+          "type": "uint256"
+        }
+      ],
+      "name": "createCampaign",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "donateToCampaign",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCampaign",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "target",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "deadline",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountCollected",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address[]",
+              "name": "donators",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "donations",
+              "type": "uint256[]"
+            }
+          ],
+          "internalType": "struct CrowdFunding.Campaign[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getDonators",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "numberOfCampaigns",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+
 
 // -----Fetching the smart contract
-const fetchContract = (signerOrProvider) => new ethers.Contract(CrowdFundingAddress, CrowdFundingABI, signerOrProvider);
+const fetchContract = (signerOrProvider) => new ethers.Contract(contractAddress, abi, signerOrProvider);
 
 export const CrowdFundingContext = React.createContext();
 
@@ -74,7 +272,7 @@ export const CrowdFundingProvider = ({ children }) => {
         const accounts = await window.ethereum.request({
             method: "eth_accounts",
         })
-        const currentUser = accounts[0];
+        // const currentUser = accounts[0].toLowerCase();
 
         const filteredCampaigns = allCampaigns.filter(
             (campaign) => 
@@ -97,21 +295,31 @@ export const CrowdFundingProvider = ({ children }) => {
         return userData;
     }
 
-    const donate = async () => {
-        const web3Modal = new Web3Modal();
-        const connection = await web3Modal.connect();
-        const provider = new ethers.BrowserProvider(connection);
-        const signer = provider.getSigner();
-        const contract = fetchContract(signer);
+    const donate = async (pId, amount) => {
+        try {
+            if (pId === undefined || pId === null) throw new Error("Donation ID is undefined");
+            if (!amount) throw new Error("Donation amount is undefined");
 
-        const campaignData = await contract.donateToCampaign(pId, {
-            value: ethers.utils.parseEther(amount),
-        });
-
-        await campaignData.wait();
-        location.reload;
-
-        return campaignData;
+            const web3Modal = new Web3Modal({cacheProvider:true});
+            const connection = await web3Modal.connect();
+            const provider = new ethers.BrowserProvider(connection);
+            const signer = await provider.getSigner();
+            const contract = new ethers.Contract(contractAddress, abi, signer);
+    
+            const value = ethers.parseEther(amount.toString());
+    
+            const campaignData = await contract.donateToCampaign(pId, {
+                value
+            });
+    
+            await campaignData.wait();
+            location.reload;
+    
+            return campaignData;
+        } catch (error) {
+            console.error("donation err", error);
+            throw error;
+        }
     };
 
     const getDonations = async (pId) => {
@@ -125,7 +333,7 @@ export const CrowdFundingProvider = ({ children }) => {
         for (let i = 0; i < numberOfDonations; i++) {
             parsedDonations.push({
                 donator: donations[0][i],
-                donation: ethers.utils.formatEther(donations[1][i].toString()),
+                donation: formatEther(donations[1][i].toString()),
 
             });
         }
