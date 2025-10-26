@@ -1,14 +1,20 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useContext } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
+import { CrowdFundingContext } from "../../Context/CrowdFunding";
+
 
 interface HeaderProps {
   isScrolled: boolean
 }
 
 export default function Headers({ isScrolled }: HeaderProps) {
+
+  const { currentAccount, connectWallet } = useContext(CrowdFundingContext);
+  
+
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
@@ -50,9 +56,22 @@ export default function Headers({ isScrolled }: HeaderProps) {
 
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <button className="px-6 py-2 text-black font-medium hover:text-gray-700 transition-colors">Sign In</button>
+          {/* <button className="px-6 py-2 text-black font-medium hover:text-gray-700 transition-colors">Sign In</button> */}
           <button className="px-6 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl">
-            Get Started
+            {!currentAccount && (
+              <ul className="flex items-center hidden space-x-8 lg:flex">
+                <li>
+                  <p
+                    onClick={() => connectWallet()}
+                    className=""
+                    aria-label="Sign Up"
+                    title="Sign Up"
+                  >
+                    Connect Wallet
+                  </p>
+                </li>
+              </ul>
+            )}
           </button>
         </div>
 
@@ -77,11 +96,22 @@ export default function Headers({ isScrolled }: HeaderProps) {
               </Link>
             ))}
             <div className="pt-4 border-t border-gray-100 space-y-2">
-              <button className="w-full px-4 py-2 text-black font-medium hover:bg-gray-50 rounded-lg transition-colors">
-                Sign In
-              </button>
+              
               <button className="w-full px-4 py-2 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
-                Get Started
+                {!currentAccount && (
+                  <ul className="flex items-center hidden space-x-8 lg:flex">
+                    <li>
+                      <p
+                        onClick={() => connectWallet()}
+                        className=""
+                        aria-label="Sign Up"
+                        title="Sign Up"
+                      >
+                        Connect Wallet
+                      </p>
+                    </li>
+                  </ul>
+                )}
               </button>
             </div>
           </div>

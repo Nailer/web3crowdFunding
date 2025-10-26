@@ -39,9 +39,10 @@ export default function Hero() {
           }`}
         >
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight text-balance">
-            Turn Your Ideas Into{" "}
+            Building Africa’s Future,{" "} <br />
             <span className="relative">
-              <span className="relative z-10">Reality</span>
+              {/* <span className="relative z-10">One Block at a Time</span> <br /> */}
+              <span className="relative z-10">With Next-Gen Crowdfunding <br /> On Hedera</span>
               <span className="absolute bottom-2 left-0 right-0 h-3 bg-black/10 -z-10 rounded" />
             </span>
           </h1>
