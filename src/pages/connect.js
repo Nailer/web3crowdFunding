@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 //INTERNAL IMPORTS
 import { CrowdFundingContext } from "../../Context/CrowdFunding"
 import { Hero, Card, PopUp } from "../../Components"
+import Link from 'next/link';
 
 export const runtime = "edge";
 

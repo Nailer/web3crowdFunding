@@ -8,7 +8,7 @@ interface HeaderProps {
   isScrolled: boolean
 }
 
-export default function Header({ isScrolled }: HeaderProps) {
+export default function Headers({ isScrolled }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
@@ -16,7 +16,7 @@ export default function Header({ isScrolled }: HeaderProps) {
     { label: "Create Campaign", href: "#create" },
     { label: "Campaigns", href: "#campaigns" },
     { label: "Learn", href: "#learn" },
-    { label: "Connect", href: "#connect" },
+    // { label: "Connect", href: "#connect" },
   ]
 
   return (
@@ -29,9 +29,9 @@ export default function Header({ isScrolled }: HeaderProps) {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
-            <span className="text-white font-bold text-lg">CF</span>
+            <span className="text-white font-bold text-lg">FDA</span>
           </div>
-          <span className="font-bold text-xl text-black hidden sm:inline">CrowdFund</span>
+          <span className="font-bold text-xl text-black hidden sm:inline">FUNDORA</span>
         </Link>
 
         {/* Desktop Navigation */}
