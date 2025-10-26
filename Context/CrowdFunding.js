@@ -9,7 +9,8 @@ import { parseEther } from "ethers";
 // import { CrowdFundingABI, CrowdFundingAddress } from "./contants";
 
 // contract address
-const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+// const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; this is the hardhat deployed CA
+const contractAddress = "0x231E55eb584376C282a29EEC470794e8B2e20a7b"; // this is for Hedera network
 
 // abi
 const abi = [

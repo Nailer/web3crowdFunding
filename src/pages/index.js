@@ -5,7 +5,7 @@ import { Hero, Card, PopUp } from "../../Components"
 
 export const runtime = "edge";
 
-const index = () => {
+const Index = () => {
   const { titleData, getCampaigns, createCampaign, donate, getUserCampaigns, getDonations } = useContext(CrowdFundingContext);
   const [allcampaign, setAllcampaign] = useState([]);
   const [usercampaign, setUsercampaign] = useState();
@@ -62,5 +62,5 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
 
