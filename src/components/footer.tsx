@@ -42,9 +42,9 @@ export default function Footer() {
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4 group">
               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
-                <span className="text-black font-bold text-lg">CF</span>
+                <span className="text-black font-bold text-lg">FDA</span>
               </div>
-              <span className="font-bold text-lg">CrowdFund</span>
+              <span className="font-bold text-lg">Fundora</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Empowering creators to turn their ideas into reality through community-driven funding.
@@ -72,7 +72,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 py-8">
           {/* Social Links */}
           <div className="flex items-center justify-between flex-col sm:flex-row gap-6">
-            <p className="text-gray-400 text-sm">© {currentYear} CrowdFund. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© {currentYear} Fundora. All rights reserved.</p>
 
             <div className="flex items-center gap-4">
               <Link

@@ -29,6 +29,16 @@ const Index = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+  const fetchData = async () => {
+    const allData = await getCampaigns();
+    console.log("All Campaigns Data:", allData);
+    setAllcampaign(allData || []); 
+  };
+
+    fetchData();
+  }, []);
+
 
   //DONATE POPUP MODEL
   const [openModel, setOpenModel] = useState(false);

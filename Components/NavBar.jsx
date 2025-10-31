@@ -40,20 +40,25 @@ const NavBar = () => {
               ))}
             </ul>
           </div>
-            {!currentAccount && (
-              <ul class="flex items-center hidden space-x-8 lg:flex">
-                <li>
-                  <button
-                    onClick={() => connectWallet()}
-                    class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none background"
-                    aria-label="Sign Up"
-                    title="Sign Up"
-                  >
-                    Connect Wallet
-                  </button>
-                </li>
-              </ul>
-            )}
+            <div className="border-gray-100 space-y-2">
+              
+              <button className="w-full px-4 py-2 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                {!currentAccount && (
+                  <ul className="flex items-center hidden space-x-8 lg:flex">
+                    <li>
+                      <p
+                        onClick={() => connectWallet()}
+                        className=""
+                        aria-label="Sign Up"
+                        title="Sign Up"
+                      >
+                        Connect Wallet
+                      </p>
+                    </li>
+                  </ul>
+                )}
+              </button>
+            </div>
 
             <div class="lg:hidden z-40">
               <button 

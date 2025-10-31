@@ -16,6 +16,7 @@ const config: HardhatUserConfig = {
   },
   networks: {
     testnet: {
+      // type: "http",
       url: process.env.HEDERA_RPC_URL || "",
       accounts: process.env.HEDERA_PRIVATE_KEY ? [process.env.HEDERA_PRIVATE_KEY] : [],
     },

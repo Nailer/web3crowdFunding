@@ -8,7 +8,7 @@ const testimonials = [
     name: "Sarah Chen",
     role: "Founder, TechFlow",
     content:
-      "CrowdFund helped us raise $500K in just 30 days. The platform is intuitive and the community support is incredible.",
+      "Fundora helped us raise $500K in just 30 days. The platform is intuitive and the community support is incredible.",
     rating: 5,
     image: "👩‍💼",
   },

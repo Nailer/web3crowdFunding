@@ -6,24 +6,24 @@ import { CheckCircle2 } from "lucide-react"
 const steps = [
   {
     number: "01",
-    title: "Create Your Campaign",
-    description: "Tell your story, set your funding goal, and define your rewards. Our templates make it easy.",
+    title: "Connect Your Wallet",
+    description: "Securely link your Hedera-compatible wallet to get started. This step lets you interact seamlessly with the Fundora.",
   },
   {
     number: "02",
-    title: "Build Your Community",
-    description: "Share your campaign with your network. Engage with backers and answer their questions.",
+    title: "Enter Your Campaign Info",
+    description: "Launch your vision on-chain in minutes. Define your project goals, funding target, and duration — all securely stored and verifiable on the Hedera network.",
   },
   {
     number: "03",
-    title: "Reach Your Goal",
+    title: "Create Your Campaign",
     description:
-      "Watch the funds roll in as your community supports your vision. Real-time updates keep everyone informed.",
+      "Deploy your campaign on the Hedera network with a single click.",
   },
   {
     number: "04",
-    title: "Deliver & Grow",
-    description: "Fulfill your promises and keep backers updated. Build lasting relationships for future projects.",
+    title: "Sign Transaction on Hedera",
+    description: "Securely authorize your campaign or contribution using Hedera’s fast and low-cost consensus network.",
   },
 ]
 

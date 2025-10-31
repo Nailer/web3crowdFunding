@@ -17,7 +17,7 @@ const Footer = () => {
 
           <div className=''>
             <h6 className='mb-4 fle items-center justify-center font-semibold uppercase md:justify-start'>
-            Crypto Naito
+            Fundora 
             </h6>
             <p>
               Here you can use the rows and columns to organise yout footer content. 

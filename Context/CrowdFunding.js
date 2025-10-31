@@ -10,7 +10,8 @@ import { parseEther } from "ethers";
 
 // contract address
 // const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; this is the hardhat deployed CA
-const contractAddress = "0x231E55eb584376C282a29EEC470794e8B2e20a7b"; // this is for Hedera network
+// const contractAddress = "0x231E55eb584376C282a29EEC470794e8B2e20a7b"; // this is for Hedera network
+const contractAddress = "0xf057fc18c7bcc4f0085EaB02BAE99f36E6712b9A"; // this is for Hedera network
 
 // abi
 const abi = [
@@ -241,7 +242,7 @@ export const CrowdFundingProvider = ({ children }) => {
   };
 
   const getCampaigns = async () => {
-    const provider = new JsonRpcProvider("http://127.0.0.1:8545/");
+    const provider = new JsonRpcProvider("https://testnet.hashio.io/api");
     const contract = fetchContract(provider);
 
     const campaigns = await contract.getCampaign();
@@ -259,7 +260,7 @@ export const CrowdFundingProvider = ({ children }) => {
   };
 
   const getUserCampaigns = async () => {
-    const provider = new JsonRpcProvider("http://127.0.0.1:8545/");
+    const provider = new JsonRpcProvider("https://testnet.hashio.io/api");
     const contract = fetchContract(provider);
 
     const allCampaigns = await contract.getCampaign();
@@ -317,7 +318,7 @@ export const CrowdFundingProvider = ({ children }) => {
   };
 
   const getDonations = async (pId) => {
-    const provider = new JsonRpcProvider("http://127.0.0.1:8545/");
+    const provider = new JsonRpcProvider("https://testnet.hashio.io/api");
     const contract = fetchContract(provider);
 
     const donations = await contract.getDonators(pId);

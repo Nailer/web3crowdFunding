@@ -9,6 +9,7 @@ import Stats from "../components/stats"
 import Testimonials from "../components/testimonials"
 import CTA from "../components/cta"
 import Footer from "../components/footer"
+import Head from "next/head"
 
 export default function index() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -24,6 +25,11 @@ export default function index() {
 
   return (
     <main className="min-h-screen bg-white">
+      <Head>
+        <title>Fundora | Empowering Transparent Crowdfunding</title>
+        <meta name="description" content="Fundora — a decentralized crowdfunding platform built on Hedera for transparent fundraising and empowerment." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Headers isScrolled={isScrolled} />
       <Hero />
       <Features />
