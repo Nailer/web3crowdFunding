@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 // internal imports
 import { useState, useEffect } from "react";
 import Headers from "../components/headers"
-import { NavBar, Footer } from "../../Components";
+import Footer  from "../components/footer";
 import Head from "next/head";
 import { CrowdFundingProvider } from "../../Context/CrowdFunding";
 
