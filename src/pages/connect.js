@@ -27,7 +27,7 @@ const Index = () => {
     };
 
     fetchData();
-  }, );
+  }, []);
 
   useEffect(() => {
   const fetchData = async () => {
@@ -37,7 +37,7 @@ const Index = () => {
   };
 
     fetchData();
-  }, );
+  }, []);
 
 
   //DONATE POPUP MODEL
