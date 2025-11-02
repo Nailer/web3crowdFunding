@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
-// import Link from "next/lia
+import Link from "next/link"
 export default function CTA() {
   const [isVisible, setIsVisible] = useState(false)
 
@@ -36,12 +36,12 @@ export default function CTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="/connect">
+            <Link href="/connect">
                 <button className="cursor-pointer px-8 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-gray-100 transition-all hover:shadow-2xl hover:scale-105 flex items-center gap-2 group">
                 Start Your Campaign
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-            </a>
+            </Link>
             <button className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-black transition-all">
               Learn More
             </button>

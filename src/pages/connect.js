@@ -4,7 +4,7 @@ import { CrowdFundingContext } from "../../Context/CrowdFunding"
 import { Hero, Card, PopUp } from "../../Components"
 import Link from 'next/link';
 
-export const runtime = "edge";
+export const runtime = "experimental-edge";
 
 const Index = () => {
   const { titleData, getCampaigns, createCampaign, donate, getUserCampaigns, getDonations } = useContext(CrowdFundingContext);
@@ -27,7 +27,7 @@ const Index = () => {
     };
 
     fetchData();
-  }, []);
+  }, [getCampaigns, getUserCampaigns]);
 
   useEffect(() => {
   const fetchData = async () => {
@@ -37,7 +37,7 @@ const Index = () => {
   };
 
     fetchData();
-  }, []);
+  }, [getCampaigns]);
 
 
   //DONATE POPUP MODEL

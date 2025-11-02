@@ -96,7 +96,7 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <p className="text-gray-700 leading-relaxed">"{testimonial.content}"</p>
+                <p className="text-gray-700 leading-relaxed">&quot;{testimonial.content}&quot;</p>
               </div>
             )
           })}

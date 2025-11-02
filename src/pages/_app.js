@@ -7,7 +7,7 @@ import { NavBar, Footer } from "../../Components";
 import Head from "next/head";
 import { CrowdFundingProvider } from "../../Context/CrowdFunding";
 
-export const runtime = "edge";
+export const runtime = "experimental-edge";
 
 export const metadata = {
   title: "Home",

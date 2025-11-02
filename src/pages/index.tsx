@@ -11,7 +11,7 @@ import CTA from "../components/cta"
 import Footer from "../components/footer"
 import Head from "next/head"
 
-export default function index() {
+export default function Index() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {

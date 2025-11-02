@@ -4,6 +4,7 @@ import { useState, useContext } from "react"
 // import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { CrowdFundingContext } from "../../Context/CrowdFunding.js";
+import Link from "next/link";
 
 
 interface HeaderProps {
@@ -33,24 +34,24 @@ export default function Headers({ isScrolled }: HeaderProps) {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
             <span className="text-white font-bold text-lg">FDA</span>
           </div>
           <span className="font-bold text-xl text-black hidden sm:inline">FUNDORA</span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.label}
               href={item.href}
               className="text-gray-700 hover:text-black font-medium transition-colors relative group"
             >
               {item.label}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -86,14 +87,14 @@ export default function Headers({ isScrolled }: HeaderProps) {
         <div className="md:hidden bg-white border-t border-gray-100 animate-fade-in-up">
           <div className="px-4 py-4 space-y-3">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <div className="pt-4 border-t border-gray-100 space-y-2">
               

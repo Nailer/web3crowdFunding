@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { TypeAnimation } from "react-type-animation";
+import Link from "next/link";
 // import Link from "next/link";
 
 
@@ -70,17 +71,17 @@ export default function Hero() {
         <div
           className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 transition-all duration-700 delay-200 `}
         >
-            <a href="/connect">
+            <Link href="/connect">
                 <button className="px-8 py-4 bg-black text-white rounded-full font-semibold text-lg hover:bg-gray-800 transition-all hover:shadow-2xl hover:scale-105 flex items-center gap-2 group cursor-pointer">
                     Start a Campaign
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-            </a>
-            <a href="/connect">
+            </Link>
+            <Link href="/connect">
                 <button className="px-8 py-4 border-2 border-black text-black rounded-full font-semibold text-lg hover:bg-black hover:text-white transition-all cursor-pointer">
                     Explore Campaigns
                 </button>
-            </a>
+            </Link>
         </div>
 
         {/* Stats Preview */}
