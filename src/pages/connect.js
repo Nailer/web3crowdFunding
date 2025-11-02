@@ -1,16 +1,22 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext, useState } from "react";
 //INTERNAL IMPORTS
-import { CrowdFundingContext } from "../../Context/CrowdFunding"
-import { Hero, Card, PopUp } from "../../Components"
-import Link from 'next/link';
+import { CrowdFundingContext } from "../../Context/CrowdFunding";
+import { Hero, Card, PopUp } from "../../Components";
+import Link from "next/link";
 
 export const runtime = "experimental-edge";
 
 const Index = () => {
-  const { titleData, getCampaigns, createCampaign, donate, getUserCampaigns, getDonations } = useContext(CrowdFundingContext);
+  const {
+    titleData,
+    getCampaigns,
+    createCampaign,
+    donate,
+    getUserCampaigns,
+    getDonations,
+  } = useContext(CrowdFundingContext);
   const [allcampaign, setAllcampaign] = useState([]);
   const [usercampaign, setUsercampaign] = useState();
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +24,7 @@ const Index = () => {
         const allData = await getCampaigns();
         const userData = await getUserCampaigns();
 
-        setAllcampaign(allData || []);   // ensure array
+        setAllcampaign(allData || []); // ensure array
         setUsercampaign(userData || []); // ensure array
       } catch (error) {
         console.error("Error fetching campaigns:", error);
@@ -29,16 +35,15 @@ const Index = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-  const fetchData = async () => {
-    const allData = await getCampaigns();
-    console.log("All Campaigns Data:", allData);
-    setAllcampaign(allData || []); 
-  };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const allData = await getCampaigns();
+  //     console.log("All Campaigns Data:", allData);
+  //     setAllcampaign(allData || []);
+  //   };
 
-    fetchData();
-  }, []);
-
+  //   fetchData();
+  // }, []);
 
   //DONATE POPUP MODEL
   const [openModel, setOpenModel] = useState(false);
@@ -53,7 +58,7 @@ const Index = () => {
         title="All Listed Campaign"
         allcampaign={allcampaign}
         setOpenModel={setOpenModel}
-        setDonate={setDonateCampaign} 
+        setDonate={setDonateCampaign}
       />
       <Card
         title="Your Created Campaign"
@@ -62,7 +67,7 @@ const Index = () => {
         setDonate={setDonateCampaign}
       />
       {openModel && (
-        <PopUp 
+        <PopUp
           setOpenModel={setOpenModel}
           getDonations={getDonations}
           donate={donateCampaign}
@@ -74,4 +79,3 @@ const Index = () => {
 };
 
 export default Index;
-
