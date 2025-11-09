@@ -242,7 +242,7 @@ export const CrowdFundingProvider = ({ children }) => {
   };
 
   const getCampaigns = async () => {
-    const provider = new JsonRpcProvider("/api/rpc");
+    const provider = new JsonRpcProvider("/api/rpc.js");
     const contract = fetchContract(provider);
 
     const campaigns = await contract.getCampaign();
