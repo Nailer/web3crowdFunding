@@ -242,7 +242,7 @@ export const CrowdFundingProvider = ({ children }) => {
   };
 
   const getCampaigns = async () => {
-    const provider = new JsonRpcProvider("/api/rpc.js");
+    const provider = new JsonRpcProvider("/src/pages/api/rpc.js");
     const contract = fetchContract(provider);
 
     const campaigns = await contract.getCampaign();
@@ -260,7 +260,7 @@ export const CrowdFundingProvider = ({ children }) => {
   };
 
   const getUserCampaigns = async () => {
-    const provider = new JsonRpcProvider("/api/rpc");
+    const provider = new JsonRpcProvider("/src/pages/api/rpc.js");
     const contract = fetchContract(provider);
 
     const allCampaigns = await contract.getCampaign();
@@ -318,7 +318,7 @@ export const CrowdFundingProvider = ({ children }) => {
   };
 
   const getDonations = async (pId) => {
-    const provider = new JsonRpcProvider("/api/rpc");
+    const provider = new JsonRpcProvider("/src/pages/api/rpc.js");
     const contract = fetchContract(provider);
 
     const donations = await contract.getDonators(pId);
